@@ -426,7 +426,7 @@ class _InputWidgetView
               controller: state.controller,
               cursorColor: widget.cursorColor,
               focusNode: widget.focusNode,
-              isDark: widget.isDark,
+          
               enabled: widget.isEnabled,
               autofocus: widget.autoFocus,
               keyboardType: widget.keyboardType,
