@@ -148,7 +148,7 @@ class SelectorButton extends StatelessWidget {
       context: inheritedContext,
       clipBehavior: Clip.hardEdge,
       isScrollControlled: isScrollControlled,
-      backgroundColor: Colors.transparent,
+      backgroundColor: isDark ? Colors.grey[900] : Colors.transparent,
       shape: RoundedRectangleBorder(
           borderRadius: BorderRadius.only(
               topLeft: Radius.circular(12), topRight: Radius.circular(12))),
@@ -163,7 +163,7 @@ class SelectorButton extends StatelessWidget {
                 textDirection: Directionality.of(inheritedContext),
                 child: Container(
                   decoration: ShapeDecoration(
-                    color: Theme.of(context).canvasColor,
+                    color: isDark ? Colors.grey[900] : Theme.of(context).canvasColor,
                     shape: RoundedRectangleBorder(
                       borderRadius: BorderRadius.only(
                         topLeft: Radius.circular(12),
