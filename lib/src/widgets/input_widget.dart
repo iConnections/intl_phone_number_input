@@ -88,7 +88,7 @@ final bool isDark;
   InternationalPhoneNumberInput(
       {Key? key,
       this.selectorConfig = const SelectorConfig(),
-       this.isDark,
+      required this.isDark,
       required this.onInputChanged,
       this.onInputValidated,
       this.onSubmit,
