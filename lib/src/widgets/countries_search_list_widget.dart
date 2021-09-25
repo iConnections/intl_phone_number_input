@@ -12,6 +12,7 @@ class CountrySearchListWidget extends StatefulWidget {
   final bool autoFocus;
   final bool? showFlags;
   final bool? useEmoji;
+  final bool isDark;
 
   CountrySearchListWidget(
     this.countries,
@@ -21,6 +22,7 @@ class CountrySearchListWidget extends StatefulWidget {
     this.showFlags,
     this.useEmoji,
     this.autoFocus = false,
+     required this.isDark,
   });
 
   @override
@@ -92,6 +94,7 @@ class _CountrySearchListWidgetState extends State<CountrySearchListWidget> {
                 locale: widget.locale,
                 showFlags: widget.showFlags!,
                 useEmoji: widget.useEmoji!,
+                isDark: widget.isDark,
               );
               // return ListTile(
               //   key: Key(TestHelper.countryItemKeyValue(country.alpha2Code)),
@@ -136,6 +139,7 @@ class DirectionalCountryListTile extends StatelessWidget {
   final String? locale;
   final bool showFlags;
   final bool useEmoji;
+  final bool isDark;
 
   const DirectionalCountryListTile({
     Key? key,
@@ -143,6 +147,7 @@ class DirectionalCountryListTile extends StatelessWidget {
     required this.locale,
     required this.showFlags,
     required this.useEmoji,
+    required this.isDark,
   }) : super(key: key);
 
   @override
@@ -156,6 +161,9 @@ class DirectionalCountryListTile extends StatelessWidget {
           '${Utils.getCountryName(country, locale)}',
           textDirection: Directionality.of(context),
           textAlign: TextAlign.start,
+          style: TextStyle(
+            color: isDark ? Color(0xFFE1E1E1) : null,
+            ),
         ),
       ),
       subtitle: Align(
@@ -164,6 +172,7 @@ class DirectionalCountryListTile extends StatelessWidget {
           '${country.dialCode ?? ''}',
           textDirection: TextDirection.ltr,
           textAlign: TextAlign.start,
+          style: TextStyle(color: isDark ? Color(0xFF9E9E9E) : null,),
         ),
       ),
       onTap: () => Navigator.of(context).pop(country),
