@@ -42,6 +42,6 @@ class SelectorConfig {
     this.setSelectorButtonAsPrefixIcon = false,
     this.leadingPadding,
     this.trailingSpace = true,
-    required this.isDark,
+    this.isDark = false,
   });
 }
