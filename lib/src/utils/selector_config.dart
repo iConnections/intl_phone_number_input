@@ -18,6 +18,7 @@ class SelectorConfig {
 
   /// [useEmoji], uses emoji flags instead of png assets
   final bool useEmoji;
+  final bool isDark;
 
   /// [countryComparator], sort the country list according to the comparator.
   ///
@@ -41,5 +42,6 @@ class SelectorConfig {
     this.setSelectorButtonAsPrefixIcon = false,
     this.leadingPadding,
     this.trailingSpace = true,
+    required this.isDark,
   });
 }
