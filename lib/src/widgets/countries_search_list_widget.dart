@@ -65,6 +65,8 @@ class _CountrySearchListWidgetState extends State<CountrySearchListWidget> {
         Padding(
           padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 16),
           child: TextFormField(
+            style: TextStyle(
+              color: widget.isDark ? Color(0xFF1D1D1D): null,),
             cursorColor: widget.isDark ? Color(0xFF793392) : Color(0xFF692B7E),
             key: Key(TestHelper.CountrySearchInputKeyValue),
             decoration: getSearchBoxDecoration(),
