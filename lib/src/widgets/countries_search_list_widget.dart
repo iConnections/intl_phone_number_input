@@ -97,7 +97,7 @@ class _CountrySearchListWidgetState extends State<CountrySearchListWidget> {
                 useEmoji: widget.useEmoji!,
                 
                 
-                : widget.isDark,
+                isDark: widget.isDark,
               );
               // return ListTile(
               //   key: Key(TestHelper.countryItemKeyValue(country.alpha2Code)),
