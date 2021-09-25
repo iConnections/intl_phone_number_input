@@ -65,6 +65,7 @@ class _CountrySearchListWidgetState extends State<CountrySearchListWidget> {
         Padding(
           padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 16),
           child: TextFormField(
+            cursorColor: widget.isDark ? Color(0xFF793392) : Color(0xFF692B7E),
             key: Key(TestHelper.CountrySearchInputKeyValue),
             decoration: getSearchBoxDecoration(),
             controller: _searchController,
@@ -94,7 +95,9 @@ class _CountrySearchListWidgetState extends State<CountrySearchListWidget> {
                 locale: widget.locale,
                 showFlags: widget.showFlags!,
                 useEmoji: widget.useEmoji!,
-                isDark: widget.isDark,
+                
+                
+                : widget.isDark,
               );
               // return ListTile(
               //   key: Key(TestHelper.countryItemKeyValue(country.alpha2Code)),
