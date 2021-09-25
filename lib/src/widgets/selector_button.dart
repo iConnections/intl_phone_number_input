@@ -130,9 +130,10 @@ class SelectorButton extends StatelessWidget {
           child: Container(
             width: double.maxFinite,
             child: CountrySearchListWidget(
-              isDark,
+          
               countries,
               locale,
+              isDark: isDark,
               searchBoxDecoration: searchBoxDecoration,
               showFlags: selectorConfig.showFlags,
               useEmoji: selectorConfig.useEmoji,
