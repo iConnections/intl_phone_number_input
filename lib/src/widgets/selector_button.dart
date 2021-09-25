@@ -130,6 +130,7 @@ class SelectorButton extends StatelessWidget {
           child: Container(
             width: double.maxFinite,
             child: CountrySearchListWidget(
+              isDark,
               countries,
               locale,
               searchBoxDecoration: searchBoxDecoration,
@@ -174,6 +175,7 @@ class SelectorButton extends StatelessWidget {
                     ),
                   ),
                   child: CountrySearchListWidget(
+                    isDark,
                     countries,
                     locale,
                     searchBoxDecoration: searchBoxDecoration,
