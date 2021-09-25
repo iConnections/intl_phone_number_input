@@ -175,9 +175,10 @@ class SelectorButton extends StatelessWidget {
                     ),
                   ),
                   child: CountrySearchListWidget(
-                    isDark,
+                 
                     countries,
                     locale,
+                    isDark: isDark,
                     searchBoxDecoration: searchBoxDecoration,
                     scrollController: controller,
                     showFlags: selectorConfig.showFlags,
