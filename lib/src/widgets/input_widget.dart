@@ -37,6 +37,7 @@ enum PhoneInputSelectorType { DROPDOWN, BOTTOM_SHEET, DIALOG }
 /// available countries to match the [countries] specified.
 class InternationalPhoneNumberInput extends StatefulWidget {
   final SelectorConfig selectorConfig;
+  final bool showSelector;
 final bool isDark;
   final ValueChanged<PhoneNumber>? onInputChanged;
   final ValueChanged<bool>? onInputValidated;
@@ -45,6 +46,7 @@ final bool isDark;
   final ValueChanged<String>? onFieldSubmitted;
   final String? Function(String?)? validator;
   final ValueChanged<PhoneNumber>? onSaved;
+  final Function onTap;
 
   final TextEditingController? textFieldController;
   final TextInputType keyboardType;
@@ -53,6 +55,8 @@ final bool isDark;
   final PhoneNumber? initialValue;
   final String? hintText;
   final String? errorMessage;
+  final String labelText;
+  final TextStyle labelTextStyle;
 
   final double selectorButtonOnErrorPadding;
 
@@ -88,6 +92,7 @@ final bool isDark;
   InternationalPhoneNumberInput(
       {Key? key,
       this.selectorConfig = const SelectorConfig(),
+       this.showSelector = true;
       required this.isDark,
       required this.onInputChanged,
       this.onInputValidated,
@@ -95,12 +100,15 @@ final bool isDark;
       this.onFieldSubmitted,
       this.validator,
       this.onSaved,
+       this.onTap,
       this.textFieldController,
       this.keyboardAction,
       this.keyboardType = TextInputType.phone,
       this.initialValue,
       this.hintText = 'Phone number',
-      this.errorMessage = 'Invalid phone number',
+       this.labelText = '',
+       this.labelTextStyle,
+       this.errorMessage = 'Invalid phone number',
       this.selectorButtonOnErrorPadding = 24,
       this.spaceBetweenSelectorAndTextField = 12,
       this.maxLength = 15,
@@ -399,6 +407,8 @@ class _InputWidgetView
             Column(
               mainAxisSize: MainAxisSize.min,
               children: <Widget>[
+                Text(labelText, style: labelTextStyle,),
+                showSelector ? 
                 SelectorButton(
                   isDark: widget.isDark,
                   country: state.country,
@@ -411,7 +421,7 @@ class _InputWidgetView
                   isEnabled: widget.isEnabled,
                   autoFocusSearchField: widget.autoFocusSearch,
                   isScrollControlled: widget.countrySelectorScrollControlled,
-                ),
+                ) : Container(),
                 SizedBox(
                   height: state.selectorButtonBottomPadding,
                 ),
@@ -426,7 +436,7 @@ class _InputWidgetView
               controller: state.controller,
               cursorColor: widget.cursorColor,
               focusNode: widget.focusNode,
-          
+          onTap: onTap,
               enabled: widget.isEnabled,
               autofocus: widget.autoFocus,
               keyboardType: widget.keyboardType,
