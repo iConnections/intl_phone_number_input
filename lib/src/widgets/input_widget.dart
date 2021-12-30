@@ -55,8 +55,7 @@ final bool isDark;
   final PhoneNumber? initialValue;
   final String? hintText;
   final String? errorMessage;
-  final String labelText;
-  final TextStyle labelTextStyle;
+  final Widget labelText;
 
   final double selectorButtonOnErrorPadding;
 
@@ -71,7 +70,7 @@ final bool isDark;
   final AutovalidateMode autoValidateMode;
   final bool ignoreBlank;
   final bool countrySelectorScrollControlled;
-  final double selectorButtonBottomPadding;
+  final EdgeInsetsGeometry selectorPadding;
 
   final String? locale;
 
@@ -107,8 +106,7 @@ final bool isDark;
       this.keyboardType = TextInputType.phone,
       this.initialValue,
       this.hintText = 'Phone number',
-       this.labelText = '',
-       this.labelTextStyle = const TextStyle(),
+       this.labelText,
        this.errorMessage = 'Invalid phone number',
       this.selectorButtonOnErrorPadding = 24,
       this.spaceBetweenSelectorAndTextField = 12,
@@ -120,7 +118,7 @@ final bool isDark;
       this.autoValidateMode = AutovalidateMode.disabled,
       this.ignoreBlank = false,
       this.countrySelectorScrollControlled = true,
-       this.selectorButtonBottomPadding = 8,
+       this.selectorPadding,
       this.locale,
       this.textStyle,
       this.selectorTextStyle,
@@ -409,8 +407,11 @@ class _InputWidgetView
             Column(
               mainAxisSize: MainAxisSize.min,
               children: <Widget>[
-                Text(widget.labelText, style: widget.labelTextStyle,),
+               labelText,
                 widget.showSelector ? 
+                Container(
+                  padding: selectorPadding,
+                  child:
                 SelectorButton(
                   isDark: widget.isDark,
                   country: state.country,
@@ -423,9 +424,9 @@ class _InputWidgetView
                   isEnabled: widget.isEnabled,
                   autoFocusSearchField: widget.autoFocusSearch,
                   isScrollControlled: widget.countrySelectorScrollControlled,
-                ) : Container(),
+                ),) : Container(),
                 SizedBox(
-                  height: widget.selectorButtonBottomPadding,
+                  height: state.selectorButtonBottomPadding,
                 ),
               ],
             ),
