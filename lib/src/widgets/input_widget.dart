@@ -46,7 +46,7 @@ final bool isDark;
   final ValueChanged<String>? onFieldSubmitted;
   final String? Function(String?)? validator;
   final ValueChanged<PhoneNumber>? onSaved;
-  final Function onTap;
+  final Function? onTap;
 
   final TextEditingController? textFieldController;
   final TextInputType keyboardType;
