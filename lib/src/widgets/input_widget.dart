@@ -55,7 +55,7 @@ final bool isDark;
   final PhoneNumber? initialValue;
   final String? hintText;
   final String? errorMessage;
-  final Widget? labelText;
+  final Widget labelText;
 
   final double selectorButtonOnErrorPadding;
 
