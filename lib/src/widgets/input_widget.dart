@@ -399,19 +399,19 @@ class _InputWidgetView
     final dialCode = state.country?.dialCode ?? '';
 
     return Container(
+      padding: widget.selectorPadding,
       child: Row(
         mainAxisAlignment: MainAxisAlignment.start,
         crossAxisAlignment: CrossAxisAlignment.center,
         children: <Widget>[
           if (!widget.selectorConfig.setSelectorButtonAsPrefixIcon) ...[
             Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
               mainAxisSize: MainAxisSize.min,
               children: <Widget>[
                widget.labelText,
                 widget.showSelector ? 
-                Container(
-                  padding: widget.selectorPadding,
-                  child:
+         
                 SelectorButton(
                   isDark: widget.isDark,
                   country: state.country,
@@ -424,7 +424,7 @@ class _InputWidgetView
                   isEnabled: widget.isEnabled,
                   autoFocusSearchField: widget.autoFocusSearch,
                   isScrollControlled: widget.countrySelectorScrollControlled,
-                ),) : Container(),
+                ) : Container(),
                 SizedBox(
                   height: state.selectorButtonBottomPadding,
                 ),
