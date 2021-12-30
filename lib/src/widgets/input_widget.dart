@@ -406,8 +406,8 @@ class _InputWidgetView
           if (!widget.selectorConfig.setSelectorButtonAsPrefixIcon) ...[
             Column(
               mainAxisSize: MainAxisSize.min,
-              children: <Widget>[
-               widget?.labelText,
+              children: <Widget?>[
+               widget.labelText,
                 widget.showSelector ? 
                 Container(
                   padding: widget.selectorPadding,
