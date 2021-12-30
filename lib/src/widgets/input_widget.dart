@@ -106,7 +106,7 @@ final bool isDark;
       this.keyboardType = TextInputType.phone,
       this.initialValue,
       this.hintText = 'Phone number',
-       this.labelText,
+       this.labelText = const Text(''),
        this.errorMessage = 'Invalid phone number',
       this.selectorButtonOnErrorPadding = 24,
       this.spaceBetweenSelectorAndTextField = 12,
@@ -406,7 +406,7 @@ class _InputWidgetView
           if (!widget.selectorConfig.setSelectorButtonAsPrefixIcon) ...[
             Column(
               mainAxisSize: MainAxisSize.min,
-              children: <Widget?>[
+              children: <Widget>[
                widget.labelText,
                 widget.showSelector ? 
                 Container(
