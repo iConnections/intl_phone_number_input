@@ -407,7 +407,7 @@ class _InputWidgetView
           if (!widget.selectorConfig.setSelectorButtonAsPrefixIcon) ...[
             Column(
               crossAxisAlignment: CrossAxisAlignment.start,
-              mainAxisSize: MainAxisSize.min,
+//               mainAxisSize: MainAxisSize.min,
               children: <Widget>[
                widget.labelText,
                 widget.showSelector ? 
