@@ -407,8 +407,8 @@ class _InputWidgetView
             Column(
               mainAxisSize: MainAxisSize.min,
               children: <Widget>[
-                Text(labelText, style: labelTextStyle,),
-                showSelector ? 
+                Text(widget.labelText, style: widget.labelTextStyle,),
+                widget.showSelector ? 
                 SelectorButton(
                   isDark: widget.isDark,
                   country: state.country,
@@ -436,7 +436,7 @@ class _InputWidgetView
               controller: state.controller,
               cursorColor: widget.cursorColor,
               focusNode: widget.focusNode,
-          onTap: onTap,
+          onTap: widget.onTap,
               enabled: widget.isEnabled,
               autofocus: widget.autoFocus,
               keyboardType: widget.keyboardType,
