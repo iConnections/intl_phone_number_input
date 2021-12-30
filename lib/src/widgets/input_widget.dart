@@ -55,7 +55,7 @@ final bool isDark;
   final PhoneNumber? initialValue;
   final String? hintText;
   final String? errorMessage;
-  final Widget labelText;
+  final Widget? labelText;
 
   final double selectorButtonOnErrorPadding;
 
@@ -401,16 +401,16 @@ class _InputWidgetView
     return Container(
       child: Row(
         mainAxisAlignment: MainAxisAlignment.start,
-        crossAxisAlignment: CrossAxisAlignment.end,
+        crossAxisAlignment: CrossAxisAlignment.center,
         children: <Widget>[
           if (!widget.selectorConfig.setSelectorButtonAsPrefixIcon) ...[
             Column(
               mainAxisSize: MainAxisSize.min,
               children: <Widget>[
-               labelText,
+               widget.labelText,
                 widget.showSelector ? 
                 Container(
-                  padding: selectorPadding,
+                  padding: widget.selectorPadding,
                   child:
                 SelectorButton(
                   isDark: widget.isDark,
