@@ -70,7 +70,7 @@ final bool isDark;
   final AutovalidateMode autoValidateMode;
   final bool ignoreBlank;
   final bool countrySelectorScrollControlled;
-  final EdgeInsetsGeometry selectorPadding;
+  final EdgeInsetsGeometry? selectorPadding;
 
   final String? locale;
 
@@ -407,7 +407,7 @@ class _InputWidgetView
             Column(
               mainAxisSize: MainAxisSize.min,
               children: <Widget>[
-               widget.labelText,
+               widget?.labelText,
                 widget.showSelector ? 
                 Container(
                   padding: widget.selectorPadding,
