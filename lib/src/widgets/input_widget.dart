@@ -37,7 +37,6 @@ enum PhoneInputSelectorType { DROPDOWN, BOTTOM_SHEET, DIALOG }
 /// available countries to match the [countries] specified.
 class InternationalPhoneNumberInput extends StatefulWidget {
   final SelectorConfig selectorConfig;
-  final bool showSelector;
 final bool isDark;
   final ValueChanged<PhoneNumber>? onInputChanged;
   final ValueChanged<bool>? onInputValidated;
@@ -46,7 +45,6 @@ final bool isDark;
   final ValueChanged<String>? onFieldSubmitted;
   final String? Function(String?)? validator;
   final ValueChanged<PhoneNumber>? onSaved;
-  final VoidCallback? onTap;
 
   final TextEditingController? textFieldController;
   final TextInputType keyboardType;
@@ -55,7 +53,6 @@ final bool isDark;
   final PhoneNumber? initialValue;
   final String? hintText;
   final String? errorMessage;
-  final Widget labelText;
 
   final double selectorButtonOnErrorPadding;
 
@@ -70,7 +67,6 @@ final bool isDark;
   final AutovalidateMode autoValidateMode;
   final bool ignoreBlank;
   final bool countrySelectorScrollControlled;
-  final EdgeInsetsGeometry? selectorPadding;
 
   final String? locale;
 
@@ -92,7 +88,6 @@ final bool isDark;
   InternationalPhoneNumberInput(
       {Key? key,
       this.selectorConfig = const SelectorConfig(),
-       this.showSelector = true,
       required this.isDark,
       required this.onInputChanged,
       this.onInputValidated,
@@ -100,14 +95,12 @@ final bool isDark;
       this.onFieldSubmitted,
       this.validator,
       this.onSaved,
-       @required this.onTap,
       this.textFieldController,
       this.keyboardAction,
       this.keyboardType = TextInputType.phone,
       this.initialValue,
       this.hintText = 'Phone number',
-       this.labelText = const Text(''),
-       this.errorMessage = 'Invalid phone number',
+      this.errorMessage = 'Invalid phone number',
       this.selectorButtonOnErrorPadding = 24,
       this.spaceBetweenSelectorAndTextField = 12,
       this.maxLength = 15,
@@ -118,7 +111,6 @@ final bool isDark;
       this.autoValidateMode = AutovalidateMode.disabled,
       this.ignoreBlank = false,
       this.countrySelectorScrollControlled = true,
-       this.selectorPadding,
       this.locale,
       this.textStyle,
       this.selectorTextStyle,
@@ -399,19 +391,14 @@ class _InputWidgetView
     final dialCode = state.country?.dialCode ?? '';
 
     return Container(
-      padding: widget.selectorPadding,
       child: Row(
         mainAxisAlignment: MainAxisAlignment.start,
-        crossAxisAlignment: CrossAxisAlignment.center,
+        crossAxisAlignment: CrossAxisAlignment.end,
         children: <Widget>[
           if (!widget.selectorConfig.setSelectorButtonAsPrefixIcon) ...[
             Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-//               mainAxisSize: MainAxisSize.min,
+              mainAxisSize: MainAxisSize.min,
               children: <Widget>[
-               widget.labelText,
-                widget.showSelector ? 
-         
                 SelectorButton(
                   isDark: widget.isDark,
                   country: state.country,
@@ -424,7 +411,7 @@ class _InputWidgetView
                   isEnabled: widget.isEnabled,
                   autoFocusSearchField: widget.autoFocusSearch,
                   isScrollControlled: widget.countrySelectorScrollControlled,
-                ) : Container(),
+                ),
                 SizedBox(
                   height: state.selectorButtonBottomPadding,
                 ),
@@ -439,7 +426,7 @@ class _InputWidgetView
               controller: state.controller,
               cursorColor: widget.cursorColor,
               focusNode: widget.focusNode,
-          onTap: widget.onTap,
+          
               enabled: widget.isEnabled,
               autofocus: widget.autoFocus,
               keyboardType: widget.keyboardType,
