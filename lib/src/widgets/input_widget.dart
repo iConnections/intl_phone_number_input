@@ -71,6 +71,7 @@ final bool isDark;
   final AutovalidateMode autoValidateMode;
   final bool ignoreBlank;
   final bool countrySelectorScrollControlled;
+  final double selectorButtonBottomPadding;
 
   final String? locale;
 
@@ -119,6 +120,7 @@ final bool isDark;
       this.autoValidateMode = AutovalidateMode.disabled,
       this.ignoreBlank = false,
       this.countrySelectorScrollControlled = true,
+       this.selectorButtonBottomPadding = 8,
       this.locale,
       this.textStyle,
       this.selectorTextStyle,
@@ -423,7 +425,7 @@ class _InputWidgetView
                   isScrollControlled: widget.countrySelectorScrollControlled,
                 ) : Container(),
                 SizedBox(
-                  height: state.selectorButtonBottomPadding,
+                  height: widget.selectorButtonBottomPadding,
                 ),
               ],
             ),
