@@ -38,7 +38,7 @@ enum PhoneInputSelectorType { DROPDOWN, BOTTOM_SHEET, DIALOG }
 class InternationalPhoneNumberInput extends StatefulWidget {
   final SelectorConfig selectorConfig;
   final bool showSelector;
-final bool isDark;
+  final bool isDark;
   final ValueChanged<PhoneNumber>? onInputChanged;
   final ValueChanged<bool>? onInputValidated;
 
@@ -48,6 +48,7 @@ final bool isDark;
   final ValueChanged<PhoneNumber>? onSaved;
   final VoidCallback? onTap;
 
+  final Key? fieldKey;
   final TextEditingController? textFieldController;
   final TextInputType keyboardType;
   final TextInputAction? keyboardAction;
@@ -92,7 +93,7 @@ final bool isDark;
   InternationalPhoneNumberInput(
       {Key? key,
       this.selectorConfig = const SelectorConfig(),
-       this.showSelector = true,
+      this.showSelector = true,
       required this.isDark,
       required this.onInputChanged,
       this.onInputValidated,
@@ -100,14 +101,15 @@ final bool isDark;
       this.onFieldSubmitted,
       this.validator,
       this.onSaved,
-       @required this.onTap,
+      @required this.onTap,
+      this.fieldKey,
       this.textFieldController,
       this.keyboardAction,
       this.keyboardType = TextInputType.phone,
       this.initialValue,
       this.hintText = 'Phone number',
-       this.labelText = const Text(''),
-       this.errorMessage = 'Invalid phone number',
+      this.labelText = const Text(''),
+      this.errorMessage = 'Invalid phone number',
       this.selectorButtonOnErrorPadding = 24,
       this.spaceBetweenSelectorAndTextField = 12,
       this.maxLength = 15,
@@ -118,7 +120,7 @@ final bool isDark;
       this.autoValidateMode = AutovalidateMode.disabled,
       this.ignoreBlank = false,
       this.countrySelectorScrollControlled = true,
-       this.selectorPadding,
+      this.selectorPadding,
       this.locale,
       this.textStyle,
       this.selectorTextStyle,
@@ -300,7 +302,7 @@ class _InputWidgetState extends State<InternationalPhoneNumberInput> {
     if (widget.selectorConfig.setSelectorButtonAsPrefixIcon) {
       return value.copyWith(
           prefixIcon: SelectorButton(
-            isDark: widget.isDark,
+        isDark: widget.isDark,
         country: country,
         countries: countries,
         onCountryChanged: onCountryChanged,
@@ -409,22 +411,23 @@ class _InputWidgetView
               crossAxisAlignment: CrossAxisAlignment.start,
 //               mainAxisSize: MainAxisSize.min,
               children: <Widget>[
-               widget.labelText,
-                widget.showSelector ? 
-         
-                SelectorButton(
-                  isDark: widget.isDark,
-                  country: state.country,
-                  countries: state.countries,
-                  onCountryChanged: state.onCountryChanged,
-                  selectorConfig: widget.selectorConfig,
-                  selectorTextStyle: widget.selectorTextStyle,
-                  searchBoxDecoration: widget.searchBoxDecoration,
-                  locale: state.locale,
-                  isEnabled: widget.isEnabled,
-                  autoFocusSearchField: widget.autoFocusSearch,
-                  isScrollControlled: widget.countrySelectorScrollControlled,
-                ) : Container(),
+                widget.labelText,
+                widget.showSelector
+                    ? SelectorButton(
+                        isDark: widget.isDark,
+                        country: state.country,
+                        countries: state.countries,
+                        onCountryChanged: state.onCountryChanged,
+                        selectorConfig: widget.selectorConfig,
+                        selectorTextStyle: widget.selectorTextStyle,
+                        searchBoxDecoration: widget.searchBoxDecoration,
+                        locale: state.locale,
+                        isEnabled: widget.isEnabled,
+                        autoFocusSearchField: widget.autoFocusSearch,
+                        isScrollControlled:
+                            widget.countrySelectorScrollControlled,
+                      )
+                    : Container(),
                 SizedBox(
                   height: state.selectorButtonBottomPadding,
                 ),
@@ -434,12 +437,12 @@ class _InputWidgetView
           ],
           Flexible(
             child: TextFormField(
-              key: Key(TestHelper.TextInputKeyValue),
+              key: widget.fieldKey ?? Key(TestHelper.TextInputKeyValue),
               textDirection: TextDirection.ltr,
               controller: state.controller,
               cursorColor: widget.cursorColor,
               focusNode: widget.focusNode,
-          onTap: widget.onTap,
+              onTap: widget.onTap,
               enabled: widget.isEnabled,
               autofocus: widget.autoFocus,
               keyboardType: widget.keyboardType,
